@@ -1,7 +1,7 @@
 #include "Arduino.h"
 #include "LCD_I2C.h"
 #include <Wire.h>
-
+#define LCD_RS      0x20
 #define LCD_EN      0x80
 LCD::LCD(int row,int column, int adress)
 {
@@ -53,4 +53,21 @@ void LCD::writei2c(byte value)
   Wire.write(value);
   Wire.endTransmission();  
   }
+void lcd_cmd (char cmd)
+{ byte lcd port;
+        lcd_port = ((cmd >> 4) & 0x0F)|LCD_EN;
+        lcd_port = ((cmd >> 4) & 0x0F);
+       writei2c(byte lcd port);
+        lcd_port = (cmd & 0x0F)|LCD_EN;
+        lcd_port = (cmd & 0x0F);
+       writei2c(byte lcd port);
+
+        delayMicroseconds(200);
+        delayMicroseconds(200); 
+}
+
+
+
+
+
   

@@ -2,6 +2,8 @@
 #define lcd_h
 #include "Arduino.h"
 
+
+//prueba de ramas
 Class LCD
 {
 public:
@@ -13,6 +15,7 @@ void setcursor(int x,int y);
 void writetetx( char lista []);
 void writei2c(byte value);
 void lcdreset();
+void lcd_cmd (char cmd);
 
   
 };
